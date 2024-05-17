@@ -1,10 +1,10 @@
-﻿using FactoryMethod.Factory;
+﻿using FactoryMethod.Factories;
 
 namespace FactoryMethod
 {
     internal class Program
     {
-        private static NotificationHandler notificationHandler;
+        private static NotificationAbstractFactory notificationHandler;
 
         /// <summary>
         /// Factories the configuration.
@@ -14,9 +14,9 @@ namespace FactoryMethod
         {
             notificationHandler = type switch
             {
-                NotificationType.WhatsApp => new WhatsAppNotificationHandler(),
-                NotificationType.Email => new EmailNotificationHandler(),
-                NotificationType.Push => new PushNotificationHandler(),
+                NotificationType.WhatsApp => new WhatsAppNotificationFactory(),
+                NotificationType.Email => new EmailNotificationFactory(),
+                NotificationType.Push => new PushNotificationFactory(),
                 _ => throw new ArgumentException("Notification Type is not handled")
             };
         }
@@ -28,13 +28,13 @@ namespace FactoryMethod
         public static void RunFactory()
         {
             FactoryConfig(NotificationType.WhatsApp);
-            notificationHandler.DoNotification();
-
+            notificationHandler.SendNotification("Hello Moto");
+            Console.WriteLine(Environment.NewLine);
             FactoryConfig(NotificationType.Email);
-            notificationHandler.DoNotification();
-
+            notificationHandler.SendNotification("Hello Moto");
+            Console.WriteLine(Environment.NewLine);
             FactoryConfig(NotificationType.Push);
-            notificationHandler.DoNotification();
+            notificationHandler.SendNotification("Hello Moto");
         }
 
         /// <summary>
