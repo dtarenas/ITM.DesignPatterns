@@ -15,7 +15,7 @@ namespace Adapter.Adpater
         {
             var reportContent = $"{this.GetHeader()}{Environment.NewLine}{this.GetDetail()}{Environment.NewLine}{this.GetFooter()}{Environment.NewLine}";
             Console.WriteLine(reportContent);
-            _freeReport.
+            //_freeReport.
         }
 
         private string GetDetail()
