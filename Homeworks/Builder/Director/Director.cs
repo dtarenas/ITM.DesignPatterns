@@ -16,7 +16,7 @@ namespace Builder.Director
                 .SetSauce(SauceType.Ketchup)
                 .SetVegetable(VegetableType.Tomato)
                 .SetVegetable(VegetableType.Lettuce)
-                .Build();
+                .SetIsCustom(false);
 
             return builder;
         }
@@ -31,25 +31,9 @@ namespace Builder.Director
                 .SetCheese(CheeseType.Vegan)
                 .SetVegetable(VegetableType.Tomato)
                 .SetVegetable(VegetableType.Lettuce)
-                .Build();
+                .SetIsCustom(false);
 
             return builder;
         }
-
-        //public IBurgerBuilder ConstructCustomBurger(IBurgerBuilder builder)
-        //{
-        //    builder
-        //        .Reset()
-        //        .SetName("ITM Burger")
-        //        .SetBread(BreadType.Cassava)
-        //        .SetMeat(MeatType.Pork)
-        //        .SetCheese(CheeseType.Mozzarella)
-        //        .SetSauce(SauceType.Ketchup)
-        //        .SetSauce(SauceType.Mustard)
-        //        .SetVegetable(VegetableType.Lettuce)
-        //        .Build();
-
-        //    return builder;
-        //}
     }
 }

@@ -10,7 +10,8 @@ namespace Builder.Builder
         IBurgerBuilder SetCheese(CheeseType cheeseType);
         IBurgerBuilder SetVegetable(VegetableType vegetableType);
         IBurgerBuilder SetSauce(SauceType sauceType);
+        IBurgerBuilder SetIsCustom(bool isCustom);
         IBurgerBuilder Reset();
-        IBurgerBuilder Build();
+        Burger Build();
     }
 }

@@ -3,11 +3,27 @@
     public class Burger
     {
         public string Name { get; set; }
-        public Bread Bread { get; set; } = new Bread();
-        public Meat Meat { get; set; } = new Meat();
-        public Cheese Cheese { get; set; } = new Cheese();
+        public Bread Bread { get; set; } = new();
+        public Meat Meat { get; set; } = new();
+        public Cheese Cheese { get; set; } = new();
         public List<Vegetable> Vegetables { get; set; } = [];
         public List<Sauce> Sauces { get; set; } = [];
+        public bool IsCustom { get; set; }
+
+        public Burger()
+        {
+        }
+
+        public Burger(string name, Bread bread, Meat meat, Cheese cheese, List<Vegetable> vegetables, List<Sauce> sauces, bool isCustom)
+        {
+            this.Name = name;
+            this.Bread = bread;
+            this.Meat = meat;
+            this.Cheese = cheese;
+            this.Vegetables = vegetables;
+            this.Sauces = sauces;
+            this.IsCustom = isCustom;
+        }
 
         public void MakeBurger()
         {
@@ -24,7 +40,13 @@
 
         private string GetTotalPrice()
         {
-            var totalPrice = this.Bread.GetPrice() + this.Meat.GetPrice() + this.Cheese.GetPrice() + this.Vegetables.Sum(x => x.GetPrice()) + this.Sauces.Sum(x => x.GetPrice());
+            var totalPrice = this.Bread.GetPrice() +
+                this.Meat.GetPrice() +
+                this.Cheese.GetPrice() +
+                this.Vegetables.Sum(x => x.GetPrice()) +
+                this.Sauces.Sum(x => x.GetPrice());
+
+            totalPrice = this.IsCustom ? totalPrice * (1.1m) : totalPrice;
             return totalPrice.ToString("C");
         }
     }

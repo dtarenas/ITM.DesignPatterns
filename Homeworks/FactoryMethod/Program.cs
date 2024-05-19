@@ -21,19 +21,9 @@ namespace FactoryMethod
             };
         }
 
-
-        /// <summary>
-        /// Runs the factory.
-        /// </summary>
-        public static void RunFactory()
+        public static void RunFactory(NotificationType type)
         {
-            FactoryConfig(NotificationType.WhatsApp);
-            notificationHandler.SendNotification("Hello Moto");
-            Console.WriteLine(Environment.NewLine);
-            FactoryConfig(NotificationType.Email);
-            notificationHandler.SendNotification("Hello Moto");
-            Console.WriteLine(Environment.NewLine);
-            FactoryConfig(NotificationType.Push);
+            FactoryConfig(type);
             notificationHandler.SendNotification("Hello Moto");
         }
 
@@ -43,7 +33,27 @@ namespace FactoryMethod
         /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
-            RunFactory();
+            while (true)
+            {
+                Console.Write($"Choose your notification Type ({string.Join(", ", PrintEnumValues<NotificationType>())}): ");
+                string userValue = Console.ReadLine();
+                if (userValue.ToLower() == "done") { break; }
+                var notificationType = Enum.Parse<NotificationType>(userValue);
+                RunFactory(notificationType);
+                Console.WriteLine(Environment.NewLine);
+
+            }
+        }
+
+        public static List<string> PrintEnumValues<T>() where T : Enum
+        {
+            var listValues = new List<string>();
+            foreach (var value in Enum.GetValues(typeof(T)))
+            {
+                listValues.Add($"{(int)value}: {Enum.GetName(typeof(T), value)}");
+            }
+
+            return listValues;
         }
     }
 }

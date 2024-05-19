@@ -36,10 +36,9 @@ namespace Builder.Builder
             return this;
         }
 
-        public IBurgerBuilder Build()
+        public Burger Build()
         {
-            _burger.MakeBurger();
-            return this;
+            return new Burger(this._burger.Name, this._burger.Bread, this._burger.Meat, this._burger.Cheese, this._burger.Vegetables, this._burger.Sauces, this._burger.IsCustom);
         }
 
         public IBurgerBuilder SetName(string burgerName)
@@ -51,6 +50,12 @@ namespace Builder.Builder
         public IBurgerBuilder Reset()
         {
             _burger = new();
+            return this;
+        }
+
+        public IBurgerBuilder SetIsCustom(bool isCustom)
+        {
+            _burger.IsCustom = isCustom;
             return this;
         }
     }

@@ -8,52 +8,57 @@ namespace Builder
         static void Main(string[] args)
         {
             var director = new Director.Director();
-            var burger = new BurgerBuilder();
-            director.ConstructTraditionalBurger(burger);
-
+            var burgerBuilder = new BurgerBuilder();
+            var traditionalBurger = director.ConstructTraditionalBurger(burgerBuilder);
+            var burger = traditionalBurger.Build();
+            burger.MakeBurger();
             Console.WriteLine(Environment.NewLine);
-            director.ConstructVegetarianBurger(burger);
-
-
+            var vegetarianBurger = director.ConstructVegetarianBurger(burgerBuilder);
+            burger = vegetarianBurger.Build();
+            burger.MakeBurger();
             Console.WriteLine(Environment.NewLine);
+
+
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            burger.Reset();
+            burgerBuilder.Reset();
             Console.WriteLine("Let's build your burger!");
             Console.WriteLine("--------------------------------");
             Console.Write("Set the burger's name: ");
             string name = Console.ReadLine();
-            burger.SetName(name);
+            burgerBuilder.SetName(name);
 
             Console.Write($"Choose your bread ({string.Join(", ", PrintEnumValues<BreadType>())}): ");
             string bread = Console.ReadLine();
-            burger.SetBread(Enum.Parse<BreadType>(bread));
+            burgerBuilder.SetBread(Enum.Parse<BreadType>(bread));
 
             Console.Write($"Choose your meat ({string.Join(", ", PrintEnumValues<MeatType>())}): ");
             string meat = Console.ReadLine();
-            burger.SetMeat(Enum.Parse<MeatType>(meat));
+            burgerBuilder.SetMeat(Enum.Parse<MeatType>(meat));
 
             Console.Write($"Choose your cheese ({string.Join(", ", PrintEnumValues<CheeseType>())}): ");
             string cheese = Console.ReadLine();
-            burger.SetCheese(Enum.Parse<CheeseType>(cheese));
+            burgerBuilder.SetCheese(Enum.Parse<CheeseType>(cheese));
             Console.WriteLine($"INFO: Add a Vegetable (wirte 'done' to finish the adding): ");
             while (true)
             {
                 Console.Write($"Add a Vegetable ({string.Join(", ", PrintEnumValues<VegetableType>())}): ");
                 string vegetable = Console.ReadLine();
-                if (vegetable.ToLower() == "done") break;
-                burger.SetVegetable(Enum.Parse<VegetableType>(vegetable));
+                if (vegetable.Equals("done", StringComparison.CurrentCultureIgnoreCase)) break;
+                burgerBuilder.SetVegetable(Enum.Parse<VegetableType>(vegetable));
             }
 
-            Console.Write($"Add a Souce (wirte 'done' to finish the adding): ");
+            Console.WriteLine($"Add a Souce (wirte 'done' to finish the adding): ");
             while (true)
             {
                 Console.Write($"Add a Souce ({string.Join(", ", PrintEnumValues<SauceType>())}): ");
                 string sauce = Console.ReadLine();
-                if (sauce.ToLower() == "done") break;
-                burger.SetSauce(Enum.Parse<SauceType>(sauce));
+                if (sauce.Equals("done", StringComparison.CurrentCultureIgnoreCase)) break;
+                burgerBuilder.SetSauce(Enum.Parse<SauceType>(sauce));
             }
 
-            burger.Build();
+            burgerBuilder.SetIsCustom(true);
+            burger = burgerBuilder.Build();
+            burger.MakeBurger();
             Console.ResetColor();
         }
 
