@@ -2,11 +2,11 @@
 
 namespace Adapter.Adpater
 {
-    public class OldReportLibraryReportToNewReportLibraryAdapter : IOldReportLibrary
+    public class FreeReportLibraryReportToNewReportLibraryAdapter : IFreeReportLibrary
     {
         private readonly NewReportLibrary _newReportLibrary;
 
-        public OldReportLibraryReportToNewReportLibraryAdapter(NewReportLibrary freeReport)
+        public FreeReportLibraryReportToNewReportLibraryAdapter(NewReportLibrary freeReport)
         {
             this._newReportLibrary = freeReport;
         }

@@ -9,13 +9,13 @@ namespace Adapter
         {
             Console.ResetColor();
             var newReportLibrary = new NewReportLibrary();
-            var adapter = new OldReportLibraryReportToNewReportLibraryAdapter(newReportLibrary);
+            var adapter = new FreeReportLibraryReportToNewReportLibraryAdapter(newReportLibrary);
             var reportSample = new ReportSample();
             reportSample.DoReport(adapter);
 
 
             newReportLibrary = new NewReportLibrary();
-            adapter = new OldReportLibraryReportToNewReportLibraryAdapter(newReportLibrary);
+            adapter = new FreeReportLibraryReportToNewReportLibraryAdapter(newReportLibrary);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Let's create a new Report using the new Library: ");
             Console.WriteLine("Add the header: ");

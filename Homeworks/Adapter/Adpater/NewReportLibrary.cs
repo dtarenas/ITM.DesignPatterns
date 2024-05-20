@@ -24,14 +24,9 @@ namespace Adapter.Adpater
             return $"GroupDetail-{this._groupDetailId++}";
         }
 
-        public void AddText(string objectId, string value)
+        public void AddText(string objectId, string textValue)
         {
-            this._content.Add(objectId, value);
-        }
-
-        public void AddText(string objectId, Dictionary<string, string> value)
-        {
-            this._content.Concat(value);
+            this._content.Add(objectId, textValue);
         }
 
         public string PrintReport()

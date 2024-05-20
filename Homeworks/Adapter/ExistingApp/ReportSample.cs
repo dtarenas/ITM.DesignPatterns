@@ -4,7 +4,7 @@ namespace Adapter.ExistingApp
 {
     public class ReportSample
     {
-        public void DoReport(IOldReportLibrary oldReportLibrary)
+        public void DoReport(IFreeReportLibrary oldReportLibrary)
         {
             oldReportLibrary.AddHeader("Sample Header");
             oldReportLibrary.AddDetails(GetRandomDetails(10));

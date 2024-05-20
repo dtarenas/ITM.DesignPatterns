@@ -1,6 +1,6 @@
 ﻿namespace Adapter.ExistingApp
 {
-    public interface IOldReportLibrary
+    public interface IFreeReportLibrary
     {
         void AddHeader(string header);
         void AddDetails(List<string> detail);
