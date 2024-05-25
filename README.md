@@ -1,6 +1,6 @@
 # ITM Design Patterns  ![favicon-32x32](https://github.com/dtarenas/ITM.DesignPatterns/assets/42014718/b987e36b-5ca4-46c7-96ba-8602caaee562)
 
-## Teamwork
+## Teamates
 - Diego Alejandro Arenas Tangarife.
 - Diana Milena García Galarza.
 
