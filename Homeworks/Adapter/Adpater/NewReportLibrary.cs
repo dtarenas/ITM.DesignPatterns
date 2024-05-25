@@ -11,26 +11,31 @@ namespace Adapter.Adpater
 
         public string CreateGroupHeader()
         {
+            Console.WriteLine("\tCalling CreateGroupHeader()");
             return $"GroupHeader-{this._groupHeaderId++}";
         }
 
         public string CreateGroupFooter()
         {
+            Console.WriteLine("\tCalling CreateGroupFooter()");
             return $"GroupFooter-{this._groupFooterId++}";
         }
 
         public string CreateGroupDetail()
         {
+            Console.WriteLine("\tCalling CreateGroupDetail()");
             return $"GroupDetail-{this._groupDetailId++}";
         }
 
         public void AddText(string objectId, string textValue)
         {
+            Console.WriteLine("\tCalling AddText()");
             this._content.Add(objectId, textValue);
         }
 
         public string PrintReport()
         {
+            Console.WriteLine("\tInit PrintReport()");
             var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine(AddLine());
             for (int i = 0; i < this._groupHeaderId; i++)
@@ -54,12 +59,13 @@ namespace Adapter.Adpater
             }
 
             stringBuilder.AppendLine(AddLine());
-
+            Console.WriteLine("\tEnd PrintReport()");
             return stringBuilder.ToString();
         }
 
         private string AddLine()
         {
+            Console.WriteLine("\tCalling AddLine()");
             return "+--------------------------------------------+";
         }
     }
