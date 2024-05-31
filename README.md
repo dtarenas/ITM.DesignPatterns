@@ -32,10 +32,22 @@
 
 -------------
 
-### *Pattern:* Adapter
-#### *Scenario:* ReserApp is using a free reporting library that will deprecated during the second half of 2024, and this must be replaced by a new paid library that will provide support for as long as its license is paid
-#### *Problem:* There are currently 35 reports that should not be affected in the migration process to the new library
+### *Pattern:* Observer
+#### *Scenario:* The Reservations module of ReserApp must notify the status of a reservation to the residential unit admin and the resident who created the reservation as well.
+#### *Problem:* Notifications must be in real time
 #### *Class Diagram*
-![Tarea1_Patrones-Adapter](https://github.com/dtarenas/ITM.DesignPatterns/assets/42014718/c9042d2d-6571-43f4-8723-405be3a3faa7)
+![Tarea1_Patrones-Observer](https://github.com/dtarenas/ITM.DesignPatterns/assets/42014718/e9e747e0-83a0-495b-8ad7-db4212265261)
+
+
+-------------
+
+### *Pattern:* Strategy
+#### *Scenario:* The ReserApp Payment module must calculate the price of the reservation according to the common area type booked
+#### *Problem:* Each common area has a different calculation to get the price based on the number of hours of reservation, type and number of people, taxes and more
+#### *Class Diagram*
+![Tarea1_Patrones-Strategy](https://github.com/dtarenas/ITM.DesignPatterns/assets/42014718/06afdadb-4f8e-4325-95d7-4dabbdbb0d6a)
+
+
+
 
 
